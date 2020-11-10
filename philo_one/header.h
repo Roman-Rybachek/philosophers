@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/11 01:37:49 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/11 01:57:53 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct			s_data
 {
 	size_t				philo_nbr;
 	pthread_mutex_t		**forks; // Это вилки. Они мьютексы.
+	t_philo				*philos; // Это философы.
 }						t_data;
 
 
