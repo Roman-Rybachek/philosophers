@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:10:27 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/11 20:26:12 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/11 21:09:42 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ int		init(t_data *data, char **args, int argc)
 	data->sleeping_time = (size_t)ft_atoi(args[4]);
 	if (argc == 6)
 		data->eating_nbr = (size_t)ft_atoi(args[5]);
+	else
+		data->eating_nbr = -1;
 
+	/*
+		выделить память для философов
+		проинициализировать философов
+		каждому дать указатели на мьютексы
 
+	*/
 }
