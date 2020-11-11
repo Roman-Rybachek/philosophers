@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/11 21:09:45 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/11 23:51:05 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 typedef struct			s_philo
 {
 	/* data */
+	pthread_t			id;
 	size_t				life_time; //Время жизни
-	struct timeval 		las_eat;
+	struct timeval 		last_eat;
 }						t_philo;
 
 typedef struct			s_data
@@ -33,14 +34,14 @@ typedef struct			s_data
 
 	struct timeval 		start_time;
 	pthread_mutex_t		**forks; // Это вилки. Они мьютексы.
-	t_philo				*philos; // Это философы.
+	t_philo				**philos; // Это философы.
 }						t_data;
-
 
 /* Utils */
 size_t		ft_strlen(const char *s);
 void		exit_with_message(char *message);
 int			init(t_data *data, char **args, int argc);
 int			ft_atoi(const char *str);
+void		*pr_malloc(size_t size_of_type, size_t count);
 
 #endif
