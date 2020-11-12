@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   live.c                                             :+:      :+:    :+:   */
+/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 19:31:51 by jeldora          ###   ########.fr       */
+/*   Created: 2020/06/15 01:42:34 by jeldora           #+#    #+#             */
+/*   Updated: 2020/11/12 18:49:17 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	*live(t_data *data)
+size_t		ft_nbr_len(int n)
 {
-	int		cur_time;
+	size_t count;
 
-	while (1)
+	count = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
 	{
-		cur_time = get_time();
-		pthread_mutex_lock(data->philos[data->i]->l_fork);
-		pthread_mutex_lock(data->philos[data->i]->r_fork);
+		n /= 10;
+		count++;
 	}
-	// Ест
-	/* берем время,  */
-	// Спит
-	// Конец (ждет пока не освободятся вилки снова, и в это время думает)
-
-	
-	return ;
+	return (count);
 }

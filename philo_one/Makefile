@@ -6,12 +6,14 @@
 #    By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 00:14:30 by jeldora           #+#    #+#              #
-#    Updated: 2020/11/11 01:37:54 by jeldora          ###   ########.fr        #
+#    Updated: 2020/11/12 17:34:21 by jeldora          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo_one
-SRCS = main.c 
+SRCS =	main.c \
+		live.c \
+		init.c \
 	
 OBJ = $(SRCS:.c=.o)
 

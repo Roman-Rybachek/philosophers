@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   live.c                                             :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 19:31:51 by jeldora          ###   ########.fr       */
+/*   Created: 2020/11/12 19:27:04 by jeldora           #+#    #+#             */
+/*   Updated: 2020/11/12 19:30:09 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	*live(t_data *data)
+int		get_time()
 {
-	int		cur_time;
+	struct timeval	current_time;
+	int				ret;
 
-	while (1)
-	{
-		cur_time = get_time();
-		pthread_mutex_lock(data->philos[data->i]->l_fork);
-		pthread_mutex_lock(data->philos[data->i]->r_fork);
-	}
-	// Ест
-	/* берем время,  */
-	// Спит
-	// Конец (ждет пока не освободятся вилки снова, и в это время думает)
-
-	
-	return ;
+	gettimeofday(&current_time, NULL);
+	ret = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
+	return (ret);
 }

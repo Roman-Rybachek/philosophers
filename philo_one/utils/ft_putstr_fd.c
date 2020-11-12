@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   live.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 19:31:51 by jeldora          ###   ########.fr       */
+/*   Created: 2020/04/29 17:53:52 by jeldora           #+#    #+#             */
+/*   Updated: 2020/11/12 19:10:13 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	*live(t_data *data)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int		cur_time;
-
-	while (1)
+	if (s == 0)
+		return ;
+	while (*s != '\0')
 	{
-		cur_time = get_time();
-		pthread_mutex_lock(data->philos[data->i]->l_fork);
-		pthread_mutex_lock(data->philos[data->i]->r_fork);
+		ft_putchar_fd(*s, fd);
+		s++;
 	}
-	// Ест
-	/* берем время,  */
-	// Спит
-	// Конец (ждет пока не освободятся вилки снова, и в это время думает)
-
-	
-	return ;
 }

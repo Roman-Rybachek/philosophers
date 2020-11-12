@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   live.c                                             :+:      :+:    :+:   */
+/*   timestamp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 19:31:51 by jeldora          ###   ########.fr       */
+/*   Created: 2020/11/12 18:04:45 by jeldora           #+#    #+#             */
+/*   Updated: 2020/11/12 19:33:32 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "unistd.h"
 #include "header.h"
+// выводит три значения
 
-void	*live(t_data *data)
+void		timestamp(int philo_nbr, char *str)
 {
-	int		cur_time;
-
-	while (1)
-	{
-		cur_time = get_time();
-		pthread_mutex_lock(data->philos[data->i]->l_fork);
-		pthread_mutex_lock(data->philos[data->i]->r_fork);
-	}
-	// Ест
-	/* берем время,  */
-	// Спит
-	// Конец (ждет пока не освободятся вилки снова, и в это время думает)
-
-	
-	return ;
+	ft_putstr_fd(ft_atoi(get_time()), 1);
+	ft_putstr_fd(" ", 1);
+	ft_putstr_fd(ft_atoi(philo_nbr), 1);
+	ft_putstr_fd(" ", 1);
+	ft_putstr_fd(str, 1);
+	ft_putstr_fd("\n", 1);
 }

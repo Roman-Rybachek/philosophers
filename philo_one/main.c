@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 00:17:01 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 03:13:18 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/12 18:01:46 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,22 @@
 
 static void		start(t_data *data)
 {
-	int		i;
-
-	i = 0;
-	while (i < data->philo_nbr)
-		pthread_create(data->philos[i]->id, NULL, &live, data);
+	data->i = 0;
+	while (data->i < data->philo_nbr)
+	{
+		gettimeofday(&data->philos[data->i]->last_eat, NULL);
+		pthread_create(data->philos[data->i]->id, NULL, &live, data);
+		data->i++;
+	}
 }
 
 int				main(int argc, char **argv)
 {
 	t_data data;
 
-	// Проверяем аргументы на некорректный ввод
 	if (argc < 5 || argc > 6)
 		exit_with_message("Invalid arguments number\n");
 	init(&data, argv, argc);
-	// далее поочереди запускаем каждый поток. Параметром передаем функцию жизни.
-	// И дальше они сами по себе существуют
 	start(&data);
-
 	return (0);
 }
-
-// Инициализируем всю хуйню
-	// Запускаем симуляцию
-
-	// Что нужно сделать для начала?
-	/*
-		Для начала нужно понять, что такое вилки,
-		в виде чего они должны присутствовать в программе,
-		как философы будут брать эти вилки.
-
-
-		Философ должен брать сразу две вилки. Нельзя, чтобы
-		каждый философ взял по одной вилки. Тогда не один не сможет поесть.
-
-		Мы поочереди запускаем новый поток философа с циклом жизни поесть-поспать-думать
-	*/
