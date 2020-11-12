@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:10:27 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 19:34:55 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/12 22:11:52 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void		init_philos(t_data *data)
 		give_forks_to_philo(data, i);
 
 		data->philos[i]->life_time = data->life_time;
-		data->philos[i]->index = i + 1;
+		data->philos[i]->index = i;
 		data->philos[i]->is_dead = 0;
 		i++;
 	}

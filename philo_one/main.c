@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 00:17:01 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 18:01:46 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/12 22:21:53 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void		start(t_data *data)
 	data->i = 0;
 	while (data->i < data->philo_nbr)
 	{
-		gettimeofday(&data->philos[data->i]->last_eat, NULL);
+		data->philos[data->i]->last_eat = get_time();
+		// Уточнить у Лехи насчет индексов
 		pthread_create(data->philos[data->i]->id, NULL, &live, data);
 		data->i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 20:03:06 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/12 22:34:08 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <stdio.h>
 
 typedef struct			s_philo
 {
@@ -22,7 +23,7 @@ typedef struct			s_philo
 	pthread_t			id;			// id потока
 	int					index;
 	size_t				life_time; //Сколько уже отжил
-	struct timeval 		last_eat;
+	int					last_eat;
 	int					is_dead;
 
 	pthread_mutex_t		*l_fork;
@@ -39,7 +40,6 @@ typedef struct			s_data
 	size_t				eating_nbr;
 	int					i;
 	int					start_time;
-	struct timeval		cur_time;
 	int					c_time;
 	pthread_mutex_t		**forks; // Это вилки. Они мьютексы.
 	t_philo				**philos; // Это философы.
