@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 19:35:01 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/12 20:03:06 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			ft_atoi(const char *str);
 size_t		ft_nbr_len(int n);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putchar_fd(char c, int fd);
-void		timestamp(int philo_nbr, char *str)
+void		timestamp(int philo_nbr, char *str);
 int			get_time();
 
 /* Main */
