@@ -6,11 +6,11 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 16:23:56 by jeldora           #+#    #+#             */
-/*   Updated: 2020/05/04 18:49:56 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 02:31:13 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
 
 static size_t	ft_nbrlen(int n)
 {

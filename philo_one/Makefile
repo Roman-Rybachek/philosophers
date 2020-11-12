@@ -6,28 +6,43 @@
 #    By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 00:14:30 by jeldora           #+#    #+#              #
-#    Updated: 2020/11/13 01:58:20 by jeldora          ###   ########.fr        #
+#    Updated: 2020/11/13 02:44:07 by jeldora          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo_one
+
+
+UTILS_PATH = utils
+
 SRCS =	main.c \
 		live.c \
 		init.c \
-	
+		check.c \
+		$(UTILS_PATH)/exit_with_message.c \
+		$(UTILS_PATH)/ft_atoi.c \
+		$(UTILS_PATH)/ft_itoa.c \
+		$(UTILS_PATH)/ft_nbr_len.c \
+		$(UTILS_PATH)/ft_putchar_fd.c \
+		$(UTILS_PATH)/ft_putstr_fd.c \
+		$(UTILS_PATH)/ft_strlen.c \
+		$(UTILS_PATH)/get_time.c \
+		$(UTILS_PATH)/protected_malloc.c \
+		$(UTILS_PATH)/timestamp.c
+
 FLAGS = -Wall -Wextra -Werror \
-		-I. -Iutils
+		-I. -o $(NAME)
 
 all: $(NAME)
 
 $(NAME): $(SRCS)
-	gcc $(FLAGS) $(SRCS) -o $(NAME)
+	gcc $(FLAGS) $(SRCS)
 
-%.o: %.c
-	gcc $(FLAGS) -c $< -o $@
+#%.o: %.c
+#	gcc $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f
+
 
 fclean: clean
 	rm -f $(NAME)

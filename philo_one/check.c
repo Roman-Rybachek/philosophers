@@ -6,13 +6,13 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 21:49:28 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 02:03:42 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 02:30:13 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	clean_all(t_data *data)
+static void	clean_all(t_data *data)
 {
 	int i;
 
@@ -40,7 +40,7 @@ void		*check(void *d)
 	{
 		while (i < data->philo_nbr)
 		{
-			cur_time = get_time()
+			cur_time = get_time();
 			if (cur_time - data->philos[i]->last_eat > data->life_time)
 			{
 				timestamp(i, "is dead\n");

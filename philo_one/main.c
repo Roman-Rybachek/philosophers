@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 00:17:01 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 02:04:49 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 02:46:02 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		start(t_data *data)
 	while (data->i < data->philo_nbr)
 	{
 		data->philos[data->i]->last_eat = get_time();
-		pthread_create(data->philos[data->i]->id, NULL, &live, data);
+		pthread_create(&data->philos[data->i]->id, NULL, &live, (void*)data);
 		usleep(10);
 		data->i++;
 	}

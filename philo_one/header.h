@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 02:08:17 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 02:37:02 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ typedef struct			s_philo
 
 typedef struct			s_data
 {
-	size_t				philo_nbr;
-	size_t				life_time;
-	size_t				eating_time;
-	size_t				sleeping_time;
-	size_t				eating_nbr;
+	int					philo_nbr;
+	int				life_time;
+	int				eating_time;
+	int				sleeping_time;
+	int				eating_nbr;
 	int					i;
 	int					start_time;
 	int					c_time;
@@ -51,8 +51,8 @@ size_t		ft_strlen(const char *s);
 void		exit_with_message(char *message);
 void		init(t_data *data, char **args, int argc);
 int			ft_atoi(const char *str);
+char		*ft_itoa(int n);
 void		*pr_malloc(size_t size_of_type, size_t count);
-int			ft_atoi(const char *str);
 size_t		ft_nbr_len(int n);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putchar_fd(char c, int fd);
@@ -61,5 +61,6 @@ int			get_time();
 
 /* Main */
 void	*live(void *data);
+void		*check(void *d);
 
 #endif

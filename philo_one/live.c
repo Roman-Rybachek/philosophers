@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 02:08:06 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 02:48:07 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ void	*live(void *d)
 		timestamp(nbr, "get right fork\n");
 
 		usleep(data->eating_time);
-		pthread_mutex_unlock(data->philos[nbr]->l_fork);
+		data->philos[nbr]->last_eat = get_time();
 
+		pthread_mutex_unlock(data->philos[nbr]->l_fork);
+		
 		timestamp(nbr, "put on left fork\n");
 		pthread_mutex_unlock(data->philos[nbr]->r_fork);
 
