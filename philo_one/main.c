@@ -6,22 +6,32 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 00:17:01 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/11 23:03:17 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/12 03:13:18 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		main(int argc, char **argv)
+static void		start(t_data *data)
+{
+	int		i;
+
+	i = 0;
+	while (i < data->philo_nbr)
+		pthread_create(data->philos[i]->id, NULL, &live, data);
+}
+
+int				main(int argc, char **argv)
 {
 	t_data data;
 
 	// Проверяем аргументы на некорректный ввод
 	if (argc < 5 || argc > 6)
 		exit_with_message("Invalid arguments number\n");
-	if (!init(&data, argv, argc))	
-		return (1);
-
+	init(&data, argv, argc);
+	// далее поочереди запускаем каждый поток. Параметром передаем функцию жизни.
+	// И дальше они сами по себе существуют
+	start(&data);
 
 	return (0);
 }

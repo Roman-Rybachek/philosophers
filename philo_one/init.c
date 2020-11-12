@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:10:27 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/11 23:49:53 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/12 03:39:44 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* Сбор основных параметров из аргументов и проверка их корректности */
 static void		base_init(t_data *data, char **args, int argc)
 {
-	if (!args[1] || !args[2] || !args[3] || !args[4])
+	if (!*args[1] || !*args[2] || !*args[3] || !*args[4])
 		exit_with_message("Invalid arguments\n");
 	data->philo_nbr = (size_t)ft_atoi(args[1]);
 	data->life_time = (size_t)ft_atoi(args[2]);
@@ -33,13 +33,32 @@ static void		base_init(t_data *data, char **args, int argc)
 		exit_with_message("Invalid arguments\n");
 }
 
-static void		init_philo(t_data *data, int i)
+static void		give_forks_to_philo(t_data *data, int i)
 {
-	data->philos[i]->life_time = data->life_time;
-	// Все стандартные показатели философа
+	if (i == 0)
+		data->philos[i]->l_fork = data->forks[data->philo_nbr - 1];
+	else
+		data->philos[i]->l_fork = data->forks[i - 1];
+	if (i == data->philo_nbr - 1)
+		data->philos[i]->r_fork = data->forks[0];
+	else
+		data->philos[i]->r_fork = data->forks[i + 1];
 }
 
-int				init(t_data *data, char **args, int argc)
+static void		init_philos(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < data->philo_nbr)
+	{
+		give_forks_to_philo(data, i);
+		i++;
+	}
+	data->philos[i]->life_time = data->life_time;
+}
+
+void			init(t_data *data, char **args, int argc)
 {
 	int		i;
 
@@ -51,16 +70,11 @@ int				init(t_data *data, char **args, int argc)
 	while (i < data->philo_nbr)
 	{
 		data->forks[i] = (pthread_mutex_t*)pr_malloc(sizeof(pthread_mutex_t), 1);
+		pthread_mutex_init(data->forks[i], NULL);
 		data->philos[i] = (t_philo*)pr_malloc(sizeof(t_philo), 1);
 		i++;
 	}
 	data->forks[i] = NULL;
 	data->philos[i] = NULL;
-	// память под вилки
-	// 
-	/*
-		выделить память для философов
-		проинициализировать философов
-		каждому дать указатели на мьютексы
-	*/
+	init_philos(data);
 }
