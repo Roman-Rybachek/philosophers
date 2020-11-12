@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 22:34:08 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 02:08:17 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <stdio.h>
+# include <stdlib.h>
 
 typedef struct			s_philo
 {
@@ -59,6 +60,6 @@ void		timestamp(int philo_nbr, char *str);
 int			get_time();
 
 /* Main */
-void	*live(t_data *data);
+void	*live(void *data);
 
 #endif

@@ -6,22 +6,22 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 22:37:48 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 02:08:06 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	*live(t_data *data, int index)
+void	*live(void *d)
 {
-	int		cur_time;
 	int		nbr;
+	t_data	*data;
 
 	// Уточнить у Лехи насчет индеков
+	data = (t_data*)d;
 	nbr = data->i;
 	while (1)
 	{
-		cur_time = get_time();
 		pthread_mutex_lock(data->philos[nbr]->l_fork);
 		timestamp(nbr, "get left fork\n");
 
@@ -46,5 +46,5 @@ void	*live(t_data *data, int index)
 	// Конец (ждет пока не освободятся вилки снова, и в это время думает)
 
 	
-	return ;
+	return ((void*)0);
 }
