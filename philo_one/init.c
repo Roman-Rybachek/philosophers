@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:10:27 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 02:08:33 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 21:40:19 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ static void		base_init(t_data *data, char **args, int argc)
 
 static void		give_forks_to_philo(t_data *data, int i)
 {
-	if (i == 0)
+	/*if (i == 0)
 		data->philos[i]->l_fork = data->forks[data->philo_nbr - 1];
-	else
-		data->philos[i]->l_fork = data->forks[i - 1];
+	else*/
+
+
+	data->philos[i]->l_fork = data->forks[i];
 	if (i == data->philo_nbr - 1)
 		data->philos[i]->r_fork = data->forks[0];
 	else
@@ -56,6 +58,7 @@ static void		init_philos(t_data *data)
 		data->philos[i]->life_time = data->life_time;
 		data->philos[i]->index = i;
 		data->philos[i]->is_dead = 0;
+		data->philos[i]->data = data;
 		i++;
 	}
 }
@@ -78,4 +81,5 @@ void			init(t_data *data, char **args, int argc)
 	}
 	init_philos(data);
 	data->start_time = get_time();
+	pthread_mutex_init(&data->printf_mutex, NULL);
 }

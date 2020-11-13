@@ -6,7 +6,7 @@
 #    By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 00:14:30 by jeldora           #+#    #+#              #
-#    Updated: 2020/11/13 03:04:04 by jeldora          ###   ########.fr        #
+#    Updated: 2020/11/13 20:43:31 by jeldora          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ FLAGS = -Wall -Wextra -Werror -pthread -g \
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
+$(NAME): $(SRCS) header.h
 	gcc $(FLAGS) $(SRCS)
 
 #%.o: %.c

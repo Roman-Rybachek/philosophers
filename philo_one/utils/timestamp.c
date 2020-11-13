@@ -6,18 +6,19 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 18:04:45 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 02:39:36 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 22:08:54 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 // выводит три значения
 
-void		timestamp(int philo_index, char *str)
+void		timestamp(int philo_index, char *str, t_data *data)
 {
 	char *s;
 
-	s = ft_itoa(get_time());
+	pthread_mutex_lock(&data->printf_mutex);
+	s = ft_itoa(get_time() - data->start_time); 
 	ft_putstr_fd(s, 1);
 	free(s);
 	ft_putstr_fd(" ", 1);
@@ -27,4 +28,5 @@ void		timestamp(int philo_index, char *str)
 	ft_putstr_fd(" ", 1);
 	ft_putstr_fd(str, 1);
 	ft_putstr_fd("\n", 1);
+	pthread_mutex_unlock(&data->printf_mutex);
 }
