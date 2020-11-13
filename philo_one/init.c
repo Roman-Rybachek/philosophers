@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:10:27 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 21:40:19 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 22:38:56 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ static void		base_init(t_data *data, char **args, int argc)
 
 static void		give_forks_to_philo(t_data *data, int i)
 {
-	/*if (i == 0)
-		data->philos[i]->l_fork = data->forks[data->philo_nbr - 1];
-	else*/
-
-
 	data->philos[i]->l_fork = data->forks[i];
 	if (i == data->philo_nbr - 1)
 		data->philos[i]->r_fork = data->forks[0];

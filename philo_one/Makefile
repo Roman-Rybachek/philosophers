@@ -6,7 +6,7 @@
 #    By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 00:14:30 by jeldora           #+#    #+#              #
-#    Updated: 2020/11/13 20:43:31 by jeldora          ###   ########.fr        #
+#    Updated: 2020/11/13 22:44:39 by jeldora          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,6 @@ clean:
 
 
 fclean: clean
-	rm -f $(NAME)
+	rm -fR $(NAME) $(NAME).dSYM
 
 re: fclean all
