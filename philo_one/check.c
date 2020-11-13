@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 21:49:28 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 21:46:11 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 22:36:03 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		*check(void *d)
 			cur_time = get_time();
 			if (cur_time - data->philos[i]->last_eat > (size_t)data->life_time)
 			{
+				data->philos[i]->print_time = get_time() - data->start_time;	
 				timestamp(i, "is dead\n", data);
 				clean_all(data);
 				return ((void*)0);
