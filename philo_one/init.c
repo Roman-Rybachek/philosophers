@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:10:27 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 22:38:56 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/14 00:05:30 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void		init_philos(t_data *data)
 		data->philos[i]->index = i;
 		data->philos[i]->is_dead = 0;
 		data->philos[i]->data = data;
+		data->philos[i]->count_of_eating = 0;
 		i++;
 	}
 }

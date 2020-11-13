@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 22:34:35 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/14 00:06:19 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*live(void *p)
 		timestamp(philo->index, "is eating", (t_data*)philo->data);
 		philo->last_eat = get_time(); 
 		usleep(((t_data*)philo->data)->eating_time * 1000);
- 
+		philo->count_of_eating++;
 		pthread_mutex_unlock(philo->l_fork);
 		pthread_mutex_unlock(philo->r_fork);
 

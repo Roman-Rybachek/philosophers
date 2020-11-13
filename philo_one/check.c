@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 21:49:28 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 22:36:03 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/14 00:24:35 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void		*check(void *d)
 	int		i;
 	size_t	cur_time;
 	t_data	*data;
-
+	int		count_of_eating;
+	
+	count_of_eating = 0;
 	data = (t_data*)d;
 	while (1)
 	{
@@ -43,6 +45,15 @@ void		*check(void *d)
 		while (i < data->philo_nbr)
 		{
 			cur_time = get_time();
+			if (data->philos[i]->count_of_eating >= data->eating_nbr)
+				count_of_eating++;
+			if (count_of_eating == data->philo_nbr)
+			{
+				data->philos[0]->last_eat = get_time(); 
+				timestamp(0, "Exit", data);
+				exit(0);
+			}
+				
 			if (cur_time - data->philos[i]->last_eat > (size_t)data->life_time)
 			{
 				data->philos[i]->print_time = get_time() - data->start_time;	
@@ -52,5 +63,6 @@ void		*check(void *d)
 			}
 			i++;
 		}
+		count_of_eating = 0;
 	}
 }
