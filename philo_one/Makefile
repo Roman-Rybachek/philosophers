@@ -6,7 +6,7 @@
 #    By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 00:14:30 by jeldora           #+#    #+#              #
-#    Updated: 2020/11/13 02:44:07 by jeldora          ###   ########.fr        #
+#    Updated: 2020/11/13 03:04:04 by jeldora          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS =	main.c \
 		$(UTILS_PATH)/protected_malloc.c \
 		$(UTILS_PATH)/timestamp.c
 
-FLAGS = -Wall -Wextra -Werror \
+FLAGS = -Wall -Wextra -Werror -pthread -g \
 		-I. -o $(NAME)
 
 all: $(NAME)

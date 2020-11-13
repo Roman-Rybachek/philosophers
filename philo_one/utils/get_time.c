@@ -6,13 +6,13 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 19:27:04 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/12 20:02:55 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 03:10:38 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		get_time()
+unsigned int		get_time()
 {
 	struct timeval	current_time;
 	int				ret;

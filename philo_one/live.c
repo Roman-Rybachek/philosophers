@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 02:48:38 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/13 02:58:58 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,16 @@ void	*live(void *d)
 		data->philos[nbr]->last_eat = get_time();
 
 		pthread_mutex_unlock(data->philos[nbr]->l_fork);
-
 		timestamp(nbr, "put on left fork\n");
+		
 		pthread_mutex_unlock(data->philos[nbr]->r_fork);
-
 		timestamp(nbr, "put on right fork\n");
+
 		timestamp(nbr, "go to sleep\n");
 
 		usleep(data->sleeping_time);
 		timestamp(nbr, "wake up\n");
 	}
-	// Ест
-	/* берем время,  */
-	// Спит
-	// Конец (ждет пока не освободятся вилки снова, и в это время думает)
-
 	
 	return ((void*)0);
 }
