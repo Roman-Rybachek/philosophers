@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 21:49:28 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/14 00:24:35 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/14 03:22:12 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		*check(void *d)
 		while (i < data->philo_nbr)
 		{
 			cur_time = get_time();
-			if (data->philos[i]->count_of_eating >= data->eating_nbr)
+			if (data->eating_nbr != -1 && data->philos[i]->count_of_eating >= data->eating_nbr)
 				count_of_eating++;
 			if (count_of_eating == data->philo_nbr)
 			{
