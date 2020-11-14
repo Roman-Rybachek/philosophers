@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/14 08:32:09 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/14 19:51:56 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,17 @@ void	check_left(t_data *data, int i)
 	и я могу ждать, разлочю вилку.
 */
 
+
+void	wait_for(size_t time_to_wait)
+{
+	size_t time;
+
+	time = get_time();
+	while (get_time() < time + time_to_wait)
+		usleep(100);
+}
+
+
 void	*live(void *p)
 {
 	t_philo		*philo;
@@ -61,7 +72,7 @@ void	*live(void *p)
 	philo = (t_philo*)p;
 	while (1)
 	{
-		if (philo->index % 2 > 0)
+		/*if (philo->index % 2 > 0)
 		{
 			left_hand(philo);
 			right_hand(philo);
@@ -70,12 +81,14 @@ void	*live(void *p)
 		{
 			right_hand(philo);
 			left_hand(philo);
-		}
+		}*/
 
+		left_hand(philo);
+		right_hand(philo);
 		timestamp(philo->index, "is eating", (t_data*)philo->data);
 	
 		philo->last_eat = get_time(); 
-		usleep(((t_data*)philo->data)->eating_time * 1000);
+		wait_for(((t_data*)philo->data)->eating_time);
 		philo->count_of_eating++;
 		pthread_mutex_unlock(philo->l_fork);
 		pthread_mutex_unlock(philo->r_fork);
@@ -83,7 +96,7 @@ void	*live(void *p)
 		philo->print_time = get_time() - ((t_data*)philo->data)->start_time;	
 		timestamp(philo->index, "is sleeping", (t_data*)philo->data);
 
-		usleep(((t_data*)philo->data)->sleeping_time * 1000);
+		wait_for(((t_data*)philo->data)->sleeping_time);
 		philo->print_time = get_time() - ((t_data*)philo->data)->start_time;	
 		timestamp(philo->index, "is thinking", (t_data*)philo->data);
 	}
