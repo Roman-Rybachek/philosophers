@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 00:17:01 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/13 23:44:02 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/14 22:21:05 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ static void		start(t_data *data)
 		usleep(30);
 		i++;
 	}
-	
 	check((void*)data);
-	//pthread_create(&data->id, NULL, &check, (void*)data);
 }
 
 int				main(int argc, char **argv)
