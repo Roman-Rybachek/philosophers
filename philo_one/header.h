@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/14 08:48:33 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/14 21:15:26 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putchar_fd(char c, int fd);
 void			timestamp(int philo_nbr, char *str, t_data *data);
 size_t			get_time();
+size_t			ft_strlcat(char *dst, const char *src, size_t size);
 
 /* Main */
 void	*live(void *data);

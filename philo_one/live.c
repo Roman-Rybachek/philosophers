@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/14 19:51:56 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/14 20:12:40 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	*live(void *p)
 	philo = (t_philo*)p;
 	while (1)
 	{
-		/*if (philo->index % 2 > 0)
+		if (philo->index % 2 > 0)
 		{
 			left_hand(philo);
 			right_hand(philo);
@@ -81,10 +81,9 @@ void	*live(void *p)
 		{
 			right_hand(philo);
 			left_hand(philo);
-		}*/
+		}
 
-		left_hand(philo);
-		right_hand(philo);
+// оптимизировать вывод
 		timestamp(philo->index, "is eating", (t_data*)philo->data);
 	
 		philo->last_eat = get_time(); 
