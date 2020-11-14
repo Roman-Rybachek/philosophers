@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/14 00:04:47 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/14 08:48:33 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,14 @@ typedef struct			s_philo
 	void				*data;
 	pthread_mutex_t		*l_fork;
 	pthread_mutex_t		*r_fork;
+	int					have_l;
+	int					have_r;
+
 	size_t				print_time;
 	int					count_of_eating;
+
+	long				to_death;				
+
 }						t_philo;
 
 typedef struct			s_data
