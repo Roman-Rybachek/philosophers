@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/14 21:15:26 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/15 01:25:11 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 
 typedef struct			s_philo
 {
-	/* data */
-	pthread_t			id;			// id потока
+	pthread_t			id;
 	int					index;
-	size_t				life_time; //Сколько уже отжил
+	size_t				life_time;
 	size_t				last_eat;
 	int					is_dead;
 	void				*data;
@@ -35,7 +34,7 @@ typedef struct			s_philo
 	size_t				print_time;
 	int					count_of_eating;
 
-	long				to_death;				
+	long				to_death;
 
 }						t_philo;
 
@@ -49,28 +48,25 @@ typedef struct			s_data
 	int					i;
 	int					start_time;
 	int					c_time;
-	pthread_mutex_t		**forks; // Это вилки. Они мьютексы.
-	t_philo				**philos; // Это философы.
-	pthread_mutex_t		printf_mutex;
+	pthread_mutex_t		**forks;
+	t_philo				**philos;
 	pthread_t			id;
 }						t_data;
 
-/* Utils */
-size_t			ft_strlen(const char *s);
-void			exit_with_message(char *message);
-void			init(t_data *data, char **args, int argc);
-int				ft_atoi(const char *str);
-char			*ft_itoa(int n);
-void			*pr_malloc(size_t size_of_type, size_t count);
-size_t			ft_nbr_len(int n);
-void			ft_putstr_fd(char *s, int fd);
-void			ft_putchar_fd(char c, int fd);
-void			timestamp(int philo_nbr, char *str, t_data *data);
-size_t			get_time();
-size_t			ft_strlcat(char *dst, const char *src, size_t size);
+size_t					ft_strlen(const char *s);
+void					exit_with_message(char *message);
+void					init(t_data *data, char **args, int argc);
+int						ft_atoi(const char *str);
+char					*ft_itoa(int n);
+void					*pr_malloc(size_t size_of_type, size_t count);
+size_t					ft_nbr_len(int n);
+void					ft_putstr_fd(char *s, int fd);
+void					ft_putchar_fd(char c, int fd);
+void					timestamp(int philo_nbr, char *str, t_data *data);
+size_t					get_time();
+size_t					ft_strlcat(char *dst, const char *src, size_t size);
 
-/* Main */
-void	*live(void *data);
-void		*check(void *d);
+void					*live(void *data);
+void					*check(void *d);
 
 #endif

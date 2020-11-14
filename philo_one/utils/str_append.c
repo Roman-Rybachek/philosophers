@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 14:15:18 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/14 04:52:31 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/15 01:30:26 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ char	*str_append(char *s1, char *s2)
 		i++;
 	}
 	s[(i + ft_strlen(s1) + 1)] = '\0';
-	//free(s1);
 	return (s);
 }
