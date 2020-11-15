@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/15 19:57:37 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/15 19:47:37 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/time.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <semaphore.h>
 
 typedef struct			s_philo
 {
@@ -25,8 +26,6 @@ typedef struct			s_philo
 	size_t				life_time;
 	size_t				last_eat;
 	void				*data;
-	pthread_mutex_t		*l_fork;
-	pthread_mutex_t		*r_fork;
 	size_t				print_time;
 	int					count_of_eating;
 }						t_philo;
@@ -39,10 +38,9 @@ typedef struct			s_data
 	int					sleeping_time;
 	int					eating_nbr;
 	int					start_time;
-	int					eating_now;
-	pthread_mutex_t		*self_eating;
-	pthread_mutex_t		**forks;
 	t_philo				**philos;
+	sem_t				*forks;
+	sem_t				*self_eat;
 	pthread_t			id;
 	int					exit_status;
 }						t_data;

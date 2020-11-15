@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:10:27 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/15 19:58:23 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/15 19:55:45 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@ static void		base_init(t_data *data, char **args, int argc)
 		exit_with_message("Invalid arguments\n");
 }
 
-static void		give_forks_to_philo(t_data *data, int i)
-{
-	data->philos[i]->l_fork = data->forks[i];
-	if (i == data->philo_nbr - 1)
-		data->philos[i]->r_fork = data->forks[0];
-	else
-		data->philos[i]->r_fork = data->forks[i + 1];
-}
-
 static void		init_philos(t_data *data)
 {
 	int i;
@@ -48,7 +39,6 @@ static void		init_philos(t_data *data)
 	i = 0;
 	while (i < data->philo_nbr)
 	{
-		give_forks_to_philo(data, i);
 		data->philos[i]->life_time = data->life_time;
 		data->philos[i]->index = i;
 		data->philos[i]->data = data;
@@ -64,15 +54,17 @@ void			init(t_data *data, char **args, int argc)
 	i = 0;
 	data->exit_status = 0;
 	base_init(data, args, argc);
-	data->forks = (pthread_mutex_t**)pr_malloc(sizeof(pthread_mutex_t*), \
-				data->philo_nbr);
-	data->self_eating = (pthread_mutex_t*)pr_malloc(sizeof(pthread_mutex_t), 1);
 	data->philos = (t_philo**)pr_malloc(sizeof(t_philo*), data->philo_nbr);
+	sem_unlink("Forks");
+	sem_unlink("Self_eat");
+	if ((data->forks = sem_open("Forks", O_CREAT, 0777, data->philo_nbr)) \
+		== SEM_FAILED)
+		exit(-1);
+	if ((data->self_eat = sem_open("Self_eat", O_CREAT, 0777, \
+		data->philo_nbr / 2)) == SEM_FAILED)
+		exit(-1);
 	while (i < data->philo_nbr)
 	{
-		data->forks[i] = (pthread_mutex_t*)pr_malloc(sizeof(pthread_mutex_t), \
-																	1);
-		pthread_mutex_init(data->forks[i], NULL);
 		data->philos[i] = (t_philo*)pr_malloc(sizeof(t_philo), 1);
 		i++;
 	}

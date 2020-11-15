@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 21:49:28 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/15 20:00:02 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/15 19:51:20 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,12 @@ static void	clean_all(t_data *data)
 	i = 0;
 	while (i < data->philo_nbr)
 	{
-		pthread_mutex_destroy(data->forks[i]);
 		free(data->philos[i]);
-		free(data->forks[i]);
 		i++;
 	}
-	free(data->forks);
 	free(data->philos);
-	pthread_mutex_destroy(data->self_eating);
-	free(data->self_eating);
+	sem_unlink("Forks");
+	sem_unlink("Self_eat");
 	exit(0);
 }
 
@@ -46,6 +43,7 @@ int			check_count_of_eating(int count_of_eating, t_data *data, int i)
 	}
 	if (cur_time - data->philos[i]->last_eat > (size_t)data->life_time)
 	{
+		data->exit_status = 1;
 		data->philos[i]->print_time = get_time() - data->start_time;
 		timestamp(i, "is dead\n", data);
 		clean_all(data);
