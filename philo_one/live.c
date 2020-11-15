@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/15 20:20:59 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/15 22:04:37 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,19 @@ void			*live(void *p)
 	{
 		if (((t_data*)philo->data)->exit_status == 1)
 			return ((void*)0);
-		if (((t_data*)philo->data)->eating_now >= ((t_data*)philo->data)->philo_nbr / 2)
+	/*	if (((t_data*)philo->data)->eating_now >= ((t_data*)philo->data)->philo_nbr / 2)
 			pthread_mutex_lock(((t_data*)philo->data)->self_eating);
-		((t_data*)philo->data)->eating_now++;
+		((t_data*)philo->data)->eating_now++;*/
 		left_or_right(philo);
 		timestamp(philo->index, "is eating", (t_data*)philo->data);
 		philo->last_eat = get_time();
 		wait_for(((t_data*)philo->data)->eating_time);
 		philo->count_of_eating++;
-		((t_data*)philo->data)->eating_now--;
 		pthread_mutex_unlock(philo->l_fork);
 		pthread_mutex_unlock(philo->r_fork);
-		if (((t_data*)philo->data)->eating_now >= ((t_data*)philo->data)->philo_nbr / 2)
+	/*	if (((t_data*)philo->data)->eating_now >= ((t_data*)philo->data)->philo_nbr / 2)
 			pthread_mutex_unlock(((t_data*)philo->data)->self_eating);
+		((t_data*)philo->data)->eating_now--;*/
 		philo->print_time = get_time() - ((t_data*)philo->data)->start_time;
 		timestamp(philo->index, "is sleeping", (t_data*)philo->data);
 		wait_for(((t_data*)philo->data)->sleeping_time);
