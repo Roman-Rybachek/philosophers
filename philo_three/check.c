@@ -6,14 +6,14 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 21:49:28 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/16 23:12:59 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/17 03:57:46 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdio.h>
 
-static void	clean_all(t_data *data)
+void	clean_all(t_data *data)
 {
 	int i;
 
@@ -29,7 +29,7 @@ static void	clean_all(t_data *data)
 	exit(0);
 }
 
-int			check_count_of_eating(int count_of_eating, t_data *data, int i)
+static int	check_death(t_data *data, int i)
 {
 	size_t cur_time;
 
@@ -48,15 +48,14 @@ int			check_count_of_eating(int count_of_eating, t_data *data, int i)
 void		*check(void *p)
 {
 	t_philo		*philo;
-	int			count_of_eating;
 	t_data		*data;
 
-	count_of_eating = 0;
 	philo = (t_philo*)p;
 	data = (t_data*)philo->data;
-	if (!check_count_of_eating(count_of_eating, data, philo->index))
-		return ((void*)0);
-	i++;
-
-	count_of_eating = 0;
+	usleep(100);
+	while (1)
+	{
+		if (!check_death(data, philo->index))
+			exit (0);
+	}
 }

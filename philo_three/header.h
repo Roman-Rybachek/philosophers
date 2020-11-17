@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:58:39 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/16 22:47:21 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/17 03:10:37 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <stdlib.h>
 # include <semaphore.h>
 # include <fcntl.h>
+# include <sys/wait.h>
+# include <sys/types.h>
+# include <signal.h>
 
 typedef struct			s_philo
 {
@@ -63,5 +66,6 @@ size_t					ft_strlcat(char *dst, const char *src, size_t size);
 
 void					*live(void *data);
 void					*check(void *d);
+void					clean_all(t_data *data);
 
 #endif

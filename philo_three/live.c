@@ -6,7 +6,7 @@
 /*   By: jeldora <jeldora@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 02:52:05 by jeldora           #+#    #+#             */
-/*   Updated: 2020/11/16 23:01:20 by jeldora          ###   ########.fr       */
+/*   Updated: 2020/11/17 03:56:56 by jeldora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void			*live(void *p)
 	t_philo		*philo;
 
 	philo = (t_philo*)p;
-	pthread_create(&philo->id, NULL, &check, (t_data*)philo->data);  
+	pthread_create(&philo->id, NULL, &check, philo);  
+	philo->last_eat = get_time();
 	while (1)
 	{
 		if (((t_data*)philo->data)->exit_status == 1)
@@ -48,6 +49,12 @@ void			*live(void *p)
 		sem_post(((t_data*)philo->data)->self_eat);
 		sem_post(((t_data*)philo->data)->forks);
 		sem_post(((t_data*)philo->data)->forks);
+		philo->count_of_eating++;
+
+		if (((t_data*)philo->data)->eating_nbr != -1 && philo->count_of_eating >= \
+		((t_data*)philo->data)->eating_nbr) // не точно
+			exit(0);
+
 		philo->print_time = get_time() - ((t_data*)philo->data)->start_time;
 		timestamp(philo->index, "is sleeping", (t_data*)philo->data);
 		wait_for(((t_data*)philo->data)->sleeping_time);
